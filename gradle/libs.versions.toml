@@ -11,7 +11,7 @@ kotlinxDatetime = "0.6.0"
 kotlinxDatetimeVersion = "0.4.0"
 runtime = "1.5.3"
 sqldelight = "1.5.5"
-hilt = "2.42"
+hilt = "2.51.1"
 ksp = "2.0.0-1.0.21"
 
 [libraries]
@@ -41,3 +41,4 @@ kotlinCocoapods = { id = "org.jetbrains.kotlin.native.cocoapods", version.ref = 
 sqldelight = { id = "com.squareup.sqldelight", version.ref = "sqldelight" }
 hilt = { id = "com.google.dagger.hilt.android", version.ref = "hilt" }
 ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
+kotlinKapt = { id = "org.jetbrains.kotlin.kapt", version = "1.9.20" }

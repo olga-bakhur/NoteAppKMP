@@ -2,14 +2,15 @@ plugins {
     alias(libs.plugins.kotlinMultiplatform)
     alias(libs.plugins.androidLibrary)
     alias(libs.plugins.sqldelight)
-    alias(libs.plugins.ksp)
+//    alias(libs.plugins.ksp)
+    alias(libs.plugins.kotlinKapt)
 }
 
 kotlin {
     androidTarget {
         compilations.all {
             kotlinOptions {
-                jvmTarget = "1.8"
+                jvmTarget = "17"
             }
         }
     }
@@ -47,7 +48,7 @@ kotlin {
 
 sqldelight {
     database("NoteDatabase") {
-        packageName = "com.plcoding.noteappkmm.database"
+        packageName = "com.compose.noteapp.database"
         sourceFolders = listOf("sqldelight")
     }
 }
@@ -59,7 +60,7 @@ android {
         minSdk = 28
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
 }
