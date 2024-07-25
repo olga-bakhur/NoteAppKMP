@@ -1,6 +1,5 @@
 package com.compose.noteapp.android.note_list
 
-import android.graphics.Paint.Align
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
@@ -13,9 +12,11 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material3.FloatingActionButton
+import androidx.compose.material3.FloatingActionButtonDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
@@ -26,6 +27,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -48,6 +50,7 @@ fun NoteListScreen(
                 onClick = {
 
                 },
+                shape =  RoundedCornerShape(50),
                 containerColor = Color.Black
             ) {
                 Icon(
@@ -62,7 +65,7 @@ fun NoteListScreen(
         Column(
             modifier = Modifier
                 .fillMaxSize()
-                .padding(padding),
+                .padding(padding)
         ) {
             Box(
                 modifier = Modifier.fillMaxWidth(),
@@ -78,20 +81,18 @@ fun NoteListScreen(
                         .fillMaxWidth()
                         .height(90.dp)
                 )
+                this@Column.AnimatedVisibility(
+                    visible = !state.isSearchActive,
+                    enter = fadeIn(),
+                    exit = fadeOut()
+                ) {
+                    Text(
+                        text = "All notes",
+                        fontWeight = FontWeight.Bold,
+                        fontSize = 30.sp
+                    )
+                }
             }
-
-            AnimatedVisibility(
-                visible = !state.isSearchActive,
-                enter = fadeIn(),
-                exit = fadeOut()
-            ) {
-                Text(
-                    text = "All notes",
-                    fontWeight = FontWeight.Bold,
-                    fontSize = 30.sp
-                )
-            }
-
             LazyColumn(
                 modifier = Modifier.weight(1f)
             ) {
